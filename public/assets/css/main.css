@@ -347,6 +347,10 @@ body {
   align-items: center;
 }
 
+.page__main .section__list--movies .show__shows .show__list--item {
+  padding: 10px;
+}
+
 .page__main .section__fav--movies {
   width: 20vw;
   -webkit-box-ordinal-group: 1;
