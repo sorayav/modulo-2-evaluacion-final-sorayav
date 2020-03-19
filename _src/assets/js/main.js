@@ -35,7 +35,7 @@ function renderShows(arr) {
         } else { 
             showList.innerHTML += `<li id=${item.show.id} class="show__list--item">
             <h3 class="show__title">${item.show.name}</h3>
-            <img src="https://via.placeholder.com/210x295/ffffff/666666/" alt="${item.show.name}">
+            <img src="https://via.placeholder.com/210x295/cc8383/000" alt="${item.show.name}">
             <span>Género: ${item.show.genres}</span>
             <a class="show__link" href=${item.show.url} title="Ver ficha" target="_blank"><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
             </li>`;
@@ -50,7 +50,7 @@ function renderShows(arr) {
 //     }
 // }
 
-btnSearch.addEventListener('click', connectToApi);
+
 
 // Function to connect 'Enter' key to search button. 
 function inputEnter(event) {
@@ -61,4 +61,5 @@ function inputEnter(event) {
 
 inputSearch.addEventListener('keyup', inputEnter);
 
+btnSearch.addEventListener('click', connectToApi);
 connectToApi();
