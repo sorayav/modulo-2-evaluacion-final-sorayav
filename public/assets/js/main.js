@@ -36,6 +36,15 @@ function renderShows(arr) {
 
 btnSearch.addEventListener('click', connectToApi);
 
+// Function to connect 'Enter' key to button search. 
+function inputEnter(event) {
+    if(event.keyCode === 13) {
+        btnSearch.click();
+    }
+}
+
+inputSearch.addEventListener('keyup', inputEnter);
+
 connectToApi();
 
 //# sourceMappingURL=main.js.map
