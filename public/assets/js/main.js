@@ -23,15 +23,32 @@ function connectToApi() {
 
 function renderShows(arr) {
     for (let item of arr) {
-        let showImage = item.show.image.medium;
+    let showImage = item.show.image;
 
         if (showImage !== null) {
-            showList.innerHTML += `<li id=${item.show.id} class="show__list--item"><img src="${item.show.image.medium}" alt="${item.show.name}"><h3 class="show__title">${item.show.name}</h3></li>`;
-        } else {
-            showList.innerHTML += `<li id=${item.show.id} class="show__list--item"><img src="https://via.placeholder.com/210x295/ffffff/666666/" alt="${item.show.name}"><h3 class="show__title">${item.show.name}</h3></li>`;
+            showList.innerHTML += `<li id=${item.show.id} class="show__list--item">
+            <h3 class="show__title">${item.show.name}</h3>
+            <img src="${item.show.image.medium}" alt="${item.show.name}">
+            <span>Género: ${item.show.genres}</span>
+            <a class="show__link" href=${item.show.url} title="Ver ficha" target="_blank"><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
+            </li>`;
+        } else { 
+            showList.innerHTML += `<li id=${item.show.id} class="show__list--item">
+            <h3 class="show__title">${item.show.name}</h3>
+            <img src="https://via.placeholder.com/210x295/ffffff/666666/" alt="${item.show.name}">
+            <span>Género: ${item.show.genres}</span>
+            <a class="show__link" href=${item.show.url} title="Ver ficha" target="_blank"><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
+            </li>`;
         }
     }
 }
+
+// function addToFavListeners() {
+//     showList = document.querySelectorAll('.show__list--item');
+//     for (let element of showList) {
+//         element.addEventListener('click', saveAsFav);
+//     }
+// }
 
 btnSearch.addEventListener('click', connectToApi);
 

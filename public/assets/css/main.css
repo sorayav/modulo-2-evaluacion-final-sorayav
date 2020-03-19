@@ -248,6 +248,10 @@ textarea {
   padding: 0.2em 0;
 }
 
+a {
+  text-decoration: none;
+}
+
 body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
@@ -348,7 +352,15 @@ body {
 }
 
 .page__main .section__list--movies .show__shows .show__list--item {
+  max-width: 250px;
   padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
 }
 
 .page__main .section__fav--movies {
