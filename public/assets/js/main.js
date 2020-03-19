@@ -23,20 +23,19 @@ function connectToApi() {
 
 function renderShows(arr) {
     for (let item of arr) {
-        showList.innerHTML += `<li id=${item.show.id} class="show__list--item"><img src="${item.show.image.medium}"><h3 class="show__title">${item.show.name}</h3></li>`;
+        let showImage = item.show.image.medium;
+
+        if (showImage !== null) {
+            showList.innerHTML += `<li id=${item.show.id} class="show__list--item"><img src="${item.show.image.medium}" alt="${item.show.name}"><h3 class="show__title">${item.show.name}</h3></li>`;
+        } else {
+            showList.innerHTML += `<li id=${item.show.id} class="show__list--item"><img src="https://via.placeholder.com/210x295/ffffff/666666/" alt="${item.show.name}"><h3 class="show__title">${item.show.name}</h3></li>`;
+        }
     }
 }
 
-// function addToFavListeners() {
-//     showList = document.querySelectorAll('.show__list--item');
-//     for (let element of showList) {
-//         element.addEventListener('click', saveAsFav);
-//     }
-// }
-
 btnSearch.addEventListener('click', connectToApi);
 
-// Function to connect 'Enter' key to button search. 
+// Function to connect 'Enter' key to search button. 
 function inputEnter(event) {
     if(event.keyCode === 13) {
         btnSearch.click();
