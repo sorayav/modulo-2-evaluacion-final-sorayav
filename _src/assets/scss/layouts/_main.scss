@@ -1,0 +1,54 @@
+.page__main {
+    font-family: $bodyFont;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+
+    .section__list--movies {
+        width: 80vw;
+        height: 100vh;
+        flex-grow: 2;
+        order: 1;
+        text-align: center;
+
+        .search__shows {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            border-bottom: 1px solid red;
+        }
+
+        .search__movie {
+            width: 300px;
+            border: 1px solid palevioletred;
+            margin: 15px;
+        }
+
+        .btn__search {
+            border: 1px solid palevioletred;
+        }
+
+        .show__shows {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+        }
+    }
+
+    .section__fav--movies {
+        width: 20vw;
+        order: 0;
+        text-align: center;
+        border-right: 1px dashed black;
+    }
+}
+
+.hidden {
+    display: none;
+}
