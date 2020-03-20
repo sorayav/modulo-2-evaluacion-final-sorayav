@@ -8,7 +8,7 @@ let showList = document.querySelector('.show__shows');
 const showFavList = document.querySelector('.section__fav--movies');
 
 let shows = null;
-let favShows = [];
+let favShows = readLocalStorage();
 
 function connectToApi() {
     fetch(urlBase + inputSearch.value)
@@ -61,6 +61,7 @@ function saveAsFav(event) {
     favShows.push(index);
     console.log('Guardada');
     renderFavs(favShows);
+    setLocalStorage();
     } else {
         console.log('Ya está en favoritos');
     }
@@ -99,6 +100,20 @@ function renderFavs(arrFav) {
                 }
             }
         }
+}
+
+// LocalStorage
+function setLocalStorage() {
+    localStorage.setItem('favourites', JSON.stringify(favShows));
+}
+
+function readLocalStorage() {
+    let localFavs = JSON.parse(localStorage.getItem('favourites'));
+
+    if (localFavs !== null) {
+        return localFavs
+    }
+    return localFavs = []
 }
 
 // Function to connect 'Enter' key to search button. 
