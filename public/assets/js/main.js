@@ -56,7 +56,7 @@ function addToFavListeners() {
 }
 
 function saveAsFav(event) {
-    const index = event.currentTarget.id;
+    const index = parseInt(event.currentTarget.id);
     if (favShows.indexOf(index) === -1) {
     favShows.push(index);
     console.log('Guardada');
@@ -87,9 +87,8 @@ function renderFavs(arrFav) {
     for (let favourite of arrFav) {
         const object = getShow(favourite);
         if (favourite === object.show.id) {
-            
-            sectionFav.innerHTML += `<li id=${object.show.id}>${object.show.name}prueba</li>`;
-           
+            aside.classList.remove('hidden');
+            sectionFav.innerHTML += `<li id=${object.show.id}>${object.show.name}prueba</li>`; 
         }
     }
 }
