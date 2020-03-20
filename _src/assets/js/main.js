@@ -87,10 +87,18 @@ function renderFavs(arrFav) {
     for (let favourite of arrFav) {
         const object = getShow(favourite);
         if (favourite === object.show.id) {
+            let showImage = object.show.image;
             aside.classList.remove('hidden');
-            sectionFav.innerHTML += `<li id=${object.show.id}>${object.show.name}prueba</li>`; 
+                if (showImage !== null) {
+                    sectionFav.innerHTML += `<li id=${object.show.id} class="fav__list--item"><img src="${object.show.image.medium}" alt="${object.show.name}"> <h4>${object.show.name}</h4></li>`;
+                    // const favLiElement = document.querySelector('.fav__list--item');
+                    // favLiElement.classList.add('fav__show--style');
+                    
+                } else {
+                    sectionFav.innerHTML += `<li id=${object.show.id} class="fav__list--item"><img src="https://via.placeholder.com/210x295/cc8383/000" alt="${object.show.name}"><h4>${object.show.name}</h4></li>`; 
+                }
+            }
         }
-    }
 }
 
 // Function to connect 'Enter' key to search button. 

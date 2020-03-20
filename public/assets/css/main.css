@@ -290,13 +290,10 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  position: relative;
-  margin-bottom: 100px;
 }
 
 .page__main .section__list--movies {
   width: 80vw;
-  height: 100vh;
   -webkit-box-flex: 2;
   -ms-flex-positive: 2;
   flex-grow: 2;
@@ -320,7 +317,7 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  padding: 10px;
+  padding: 0 0 10px 0;
   border-bottom: 1px solid red;
 }
 
@@ -350,6 +347,8 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  overflow: scroll;
+  height: 80vh;
 }
 
 .page__main .section__list--movies .show__shows .show__list--item {
@@ -386,13 +385,51 @@ body {
   margin-top: 10px;
 }
 
-.page__main .section__fav--movies {
+.page__main aside {
+  text-align: center;
+}
+
+.page__main aside .fav__movies--title {
+  padding: 20px 0;
+}
+
+.page__main aside .section__fav--movies {
   width: 20vw;
+  height: 90vh;
+  padding: 10px;
   -webkit-box-ordinal-group: 1;
   -ms-flex-order: 0;
   order: 0;
   text-align: center;
   border-right: 1px dashed black;
+  overflow: scroll;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-align: start;
+  -ms-flex-align: start;
+  align-items: start;
+}
+
+.page__main aside .section__fav--movies li {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center;
+}
+
+.page__main aside .section__fav--movies li img {
+  width: 100px;
 }
 
 .hidden {
@@ -410,6 +447,34 @@ body {
   background-color: black;
   width: 100vw;
   color: white;
+}
+
+@media all and (max-width: 500px) {
+  .page__main .section__list--movies {
+    width: 70vw;
+  }
+
+  .page__main .section__list--movies .search__movie {
+    width: 150px;
+  }
+
+  .page__main aside .section__fav--movies {
+    width: 30vw;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+  }
+
+  .page__main aside .section__fav--movies li {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .page__main aside .section__fav--movies li img {
+    width: 50px;
+  }
 }
 
 /*# sourceMappingURL=main.css.map */
