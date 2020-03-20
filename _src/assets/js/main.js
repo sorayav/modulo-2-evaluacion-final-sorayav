@@ -67,17 +67,17 @@ function saveAsFav(event) {
 }
 
 // Relacionar el array de ids de favoritos con el objeto al que hace referencia en el array de objetos 'shows'.
-function getShow(id) {
-    for (let show of shows) {
-        if (show.show.id === id) {
-            return show;
-        }
-    }
-}
-
 // function getShow(id) {
-//     return shows.find(show => show.show.id === id)
+//     for (let show of shows) {
+//         if (show.show.id === id) {
+//             return show;
+//         }
+//     }
 // }
+
+function getShow(id) {
+    return shows.find(show => show.show.id === id)
+}
 
 
 function renderFavs(arrFav) {
