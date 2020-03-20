@@ -50,22 +50,20 @@ function renderShows(arr) {
     
 }
 
-
-function saveAsFav(event) {
-    const index = event.currentTarget.id;
-    if (favShows.indexOf(index) === -1) {
-        favShows.push(index);
-        alert('guardada');
-    }
-}
-
 function addToFavListeners() {
-    const showListEl = document.querySelectorAll('.show__list--item');
-    for (let element of showListEl) {
+    const showListElement = document.querySelectorAll('.show__list--item');
+    for (let element of showListElement) {
         element.addEventListener('click', saveAsFav);
     }
 }
 
+function saveAsFav(event) {
+    const index = event.currentTarget.id;
+    favShows.push(index);
+    
+}
+
+// Relacionar el array de ids de favoritos con el objeto al que hace referencia en el array de objetos favShows.
 function getShow(id) {
     for (let show of shows) {
         if (show.show.id === id) {
