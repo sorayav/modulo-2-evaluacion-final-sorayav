@@ -399,6 +399,10 @@ body {
   display: none;
 }
 
+.fav__show--style {
+  background-color: red;
+}
+
 .page__footer {
   position: fixed;
   height: 3vh;

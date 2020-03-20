@@ -2,6 +2,7 @@
 
 let inputSearch = document.querySelector('.search__movie');
 const btnSearch = document.querySelector('.btn__search');
+const aside = document.querySelector('aside');
 const urlBase = 'http://api.tvmaze.com/search/shows?q=';
 let showList = document.querySelector('.show__shows');
 const showFavList = document.querySelector('.section__fav--movies');
@@ -16,12 +17,12 @@ function connectToApi() {
         shows = data;
         console.log(shows);
         renderShows(shows);
+        renderFavs(favShows);
     })
 }
 
 function renderShows(arr) {
     for (let item of arr) {
-        
     let showImage = item.show.image;
 
         if (showImage !== null) {
@@ -32,8 +33,7 @@ function renderShows(arr) {
             <span>Género: ${item.show.genres}</span>
             <a class="show__link" href=${item.show.url} title="Ver ficha" target="_blank"><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
             </div>
-            </li>`;
-            
+            </li>`;            
         } else { 
             showList.innerHTML += `<li id=${item.show.id} class="show__list--item">
             <h3 class="show__title">${item.show.name}</h3>
@@ -43,11 +43,9 @@ function renderShows(arr) {
             <a class="show__link" href=${item.show.url} title="Ver ficha" target="_blank"><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
             </div>
             </li>`;
-            
         }
         addToFavListeners();
-    }
-    
+    }   
 }
 
 function addToFavListeners() {
@@ -59,14 +57,39 @@ function addToFavListeners() {
 
 function saveAsFav(event) {
     const index = event.currentTarget.id;
+    if (favShows.indexOf(index) === -1) {
     favShows.push(index);
+    console.log('Guardada');
+    renderFavs(favShows);
+    } else {
+        console.log('Ya está en favoritos');
+    }
 }
 
-// Relacionar el array de ids de favoritos con el objeto al que hace referencia en el array de objetos favShows.
+// Relacionar el array de ids de favoritos con el objeto al que hace referencia en el array de objetos 'shows'.
 function getShow(id) {
     for (let show of shows) {
         if (show.show.id === id) {
             return show;
+        }
+    }
+}
+
+// function getShow(id) {
+//     return shows.find(show => show.show.id === id)
+// }
+
+
+function renderFavs(arrFav) {
+    const sectionFav = document.querySelector('.section__fav--movies');
+    sectionFav.innerHTML = '';
+    // Recorro el array de favoritos
+    for (let favourite of arrFav) {
+        const object = getShow(favourite);
+        if (favourite === object.show.id) {
+            
+            sectionFav.innerHTML += `<li id=${object.show.id}>${object.show.name}prueba</li>`;
+           
         }
     }
 }
@@ -77,7 +100,6 @@ function inputEnter(event) {
         btnSearch.click();
     }
 }
-
 inputSearch.addEventListener('keyup', inputEnter);
 
 btnSearch.addEventListener('click', connectToApi);
