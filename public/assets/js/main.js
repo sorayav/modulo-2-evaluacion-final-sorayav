@@ -7,7 +7,7 @@ let showList = document.querySelector('.show__shows');
 const showFavList = document.querySelector('.section__fav--movies');
 
 let shows = null;
-let favShows;
+let favShows = [];
 
 function connectToApi() {
     fetch(urlBase + inputSearch.value)
@@ -60,7 +60,6 @@ function addToFavListeners() {
 function saveAsFav(event) {
     const index = event.currentTarget.id;
     favShows.push(index);
-    
 }
 
 // Relacionar el array de ids de favoritos con el objeto al que hace referencia en el array de objetos favShows.

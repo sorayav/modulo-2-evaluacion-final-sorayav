@@ -365,6 +365,7 @@ body {
   -ms-flex-direction: column;
   flex-direction: column;
   background-color: yellow;
+  cursor: pointer;
 }
 
 .page__main .section__list--movies .show__shows .show__list--item img {
