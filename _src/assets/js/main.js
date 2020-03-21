@@ -62,22 +62,22 @@ function addClickListeners() {
 
 // Guardar favoritos
 function saveFavourites(event) {
-  const selectedShow = event.currentTarget;
-//   selectedShow.setAttribute('class', 'fav__show--style');
-  const index = event.currentTarget.id;
-  const object = getShowObject(index);
+  const selectedShow = event.currentTarget; // Revisar
+  const index = event.currentTarget.id; // Revisar con parent
+  const object = getShowObject(index); // Revisar poner el object en la función de pintar
   if (favourites.includes(object.show) !== true) {
-    selectedShow.classList.toggle('fav__show--style');
+    favourites.push(object.show); 
+    selectedShow.classList.toggle('fav__show--style'); // Revisar
     selectedShow.classList.toggle('show__list--item');
-    favourites.push(object.show);
     paintFavourites(favourites);
     setLocalStorage(favourites);
-    } else {
-      favourites.splice(object.show, 1); // Revisar, errónea
+    } 
+    else {
+      favourites.splice(object.show, 1); // Revisar
       selectedShow.classList.toggle('fav__show--style');
       selectedShow.classList.toggle('show__list--item');
       setLocalStorage(favourites);
-      paintFavourites(favourites);
+    //   paintFavourites(favourites);
     }
 }
 
@@ -101,15 +101,13 @@ function paintFavourites(favourites) {
   showFavList.innerHTML = '';
   const sectionFav = document.querySelector('.section__fav--movies');
   for (let favourite of favourites) {
-    
-    
-    if (favourite !== favourite.id) {
+    if (favourite) {
       aside.classList.remove('hidden');
       if (favourite.image !== null) {
         sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"> <h4>${favourite.name}</h4>
         <button class="btn__remove--fav type="button>x</button></li>`;
       } else {
-        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4>${favourite.name}</h4></li>
+        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4>${favourite.name}</h4>
         <button class="btn__remove--fav type="button>x</button></li>`;
       }
     } 
