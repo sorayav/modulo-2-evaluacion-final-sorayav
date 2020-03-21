@@ -9,7 +9,7 @@ const showFavList = document.querySelector('.section__fav--movies');
 const defaultImg = 'https://via.placeholder.com/210x295/cc8383/000';
 
 let shows = null;
-let favourites = [];
+let favourites = readLocalStorage();
 
 // Connect to API 
 function connectToApi() {
@@ -66,12 +66,34 @@ function saveFavourites(event) {
   selectedShow.setAttribute('class', 'fav__show--style');
   const index = event.currentTarget.id;
   const object = getShowObject(index);
-  if (favourites.includes(object.show) === false) {
+  if (favourites.includes(object.show) !== true) {
+    selectedShow.classList.add('fav__show--style');
     favourites.push(object.show);
     paintFavourites(favourites);
-    // setLocalStorage(favourites);
+    setLocalStorage(favourites);
+    } else {
+      favourites.splice(object.show, 1);
+      selectedShow.classList.remove('fav__show--style');
+      selectedShow.classList.add('show__list--item');
+      setLocalStorage(favourites);
+      paintFavourites(favourites);
     }
 }
+
+// function saveFavourites(event) {
+//     const selectedShow = event.currentTarget;
+//     selectedShow.setAttribute('class', 'fav__show--style');
+//     const index = event.currentTarget.id;
+//     const object = getShowObject(index);
+//     if (favourites.indexOf(index) === -1) {
+//       favourites.push(object.show);
+//       paintFavourites(favourites);
+//       setLocalStorage(favourites);
+//       }
+//   } else if (event) {
+//       event.preventDefault();
+//   }
+
 
 // Pintar los favoritos
 function paintFavourites(favourites) {
@@ -81,17 +103,35 @@ function paintFavourites(favourites) {
     if (favourite) {
       aside.classList.remove('hidden');
       if (favourite.image !== null) {
-        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"> <h4>${favourite.name}</h4></li>`;
+        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"> <h4>${favourite.name}</h4>
+        <button class="btn__remove--fav type="button>x</button></li>`;
       } else {
-        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4>${favourite.name}</h4></li>`;
+        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4>${favourite.name}</h4></li>
+        <button class="btn__remove--fav type="button>x</button></li>`;
       }
-    }
+    } 
   }
 }
 
 // Relacionar id de favoritos con el array de objetos shows
 function getShowObject(id) {
   return shows.find(show => show.show.id === parseInt(id));
+}
+
+// Setear localStorage, recibe como parámetro el array de los ids favoritos
+function setLocalStorage(favourites) {
+  localStorage.setItem('favourites',JSON.stringify(favourites));
+}
+
+// Leer localStorage
+function readLocalStorage() {
+  let favourites = JSON.parse(localStorage.getItem('favourites'));
+
+  if (favourites !== null) {
+    return favourites;
+  } else {
+    return favourites = []; // Para evitar que dé error, devolver un array vacío donde poder almacenar los ids
+  }
 }
 
 // Conectar la tecla 'Enter' con el botón de búsqueda 
@@ -103,5 +143,5 @@ function inputEnter(event) {
 inputSearch.addEventListener('keyup', inputEnter);
 
 btnSearch.addEventListener('click', connectToApi);
+// paintFavourites(favourites);
 connectToApi();
-paintFavourites(favourites);

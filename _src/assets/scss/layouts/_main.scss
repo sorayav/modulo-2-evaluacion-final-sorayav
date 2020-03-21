@@ -126,7 +126,12 @@
             display: flex;
             flex-direction: row;
             align-items: center;
+            position: relative;
                 
+            .btn__remove--fav {
+                position: absolute;
+                top: 0;
+            }
             // @include forTablet {
               
             // }
@@ -144,5 +149,6 @@
 }
 
 .hidden {
-    display: none;
+    position: absolute;
+    left: -20vw;
 }

@@ -462,6 +462,12 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+  position: relative;
+}
+
+.page__main aside .section__fav--movies li .btn__remove--fav {
+  position: absolute;
+  top: 0;
 }
 
 .page__main aside .section__fav--movies li img {
@@ -469,7 +475,8 @@ body {
 }
 
 .hidden {
-  display: none;
+  position: absolute;
+  left: -20vw;
 }
 
 .page__footer {
