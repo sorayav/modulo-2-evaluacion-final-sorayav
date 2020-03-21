@@ -63,18 +63,19 @@ function addClickListeners() {
 // Guardar favoritos
 function saveFavourites(event) {
   const selectedShow = event.currentTarget;
-  selectedShow.setAttribute('class', 'fav__show--style');
+//   selectedShow.setAttribute('class', 'fav__show--style');
   const index = event.currentTarget.id;
   const object = getShowObject(index);
   if (favourites.includes(object.show) !== true) {
-    selectedShow.classList.add('fav__show--style');
+    selectedShow.classList.toggle('fav__show--style');
+    selectedShow.classList.toggle('show__list--item');
     favourites.push(object.show);
     paintFavourites(favourites);
     setLocalStorage(favourites);
     } else {
-      favourites.splice(object.show, 1);
-      selectedShow.classList.remove('fav__show--style');
-      selectedShow.classList.add('show__list--item');
+      favourites.splice(object.show, 1); // Revisar, errónea
+      selectedShow.classList.toggle('fav__show--style');
+      selectedShow.classList.toggle('show__list--item');
       setLocalStorage(favourites);
       paintFavourites(favourites);
     }
@@ -100,7 +101,9 @@ function paintFavourites(favourites) {
   showFavList.innerHTML = '';
   const sectionFav = document.querySelector('.section__fav--movies');
   for (let favourite of favourites) {
-    if (favourite) {
+    
+    
+    if (favourite !== favourite.id) {
       aside.classList.remove('hidden');
       if (favourite.image !== null) {
         sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"> <h4>${favourite.name}</h4>
