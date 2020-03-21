@@ -2,125 +2,84 @@
 
 let inputSearch = document.querySelector('.search__movie');
 const btnSearch = document.querySelector('.btn__search');
-const aside = document.querySelector('aside');
 const urlBase = 'http://api.tvmaze.com/search/shows?q=';
 let showList = document.querySelector('.show__shows');
+const aside = document.querySelector('aside');
 const showFavList = document.querySelector('.section__fav--movies');
+const defaultImg = 'https://via.placeholder.com/210x295/cc8383/000';
 
 let shows = null;
-let favShows = readLocalStorage();
+let favourites = [];
 
+// Connect to API 
 function connectToApi() {
+    showList.innerHTML = '';
     fetch(urlBase + inputSearch.value)
-    .then (response => response.json())
-    .then (data => {
+      .then (response => response.json())
+      .then (data => {
         shows = data;
-        console.log(shows);
-        renderShows(shows);
-        renderFavs(favShows);
-    })
+        paintResults(shows);
+      })
 }
 
-function renderShows(arr) {
-    for (let item of arr) {
+// Pinto los resultados de búsqueda
+function paintResults(arr) {
+  for (let item of arr) {
     let showImage = item.show.image;
-
-        if (showImage !== null) {
-            showList.innerHTML += `<li id=${item.show.id} class="show__list--item">
-            <h3 class="show__title">${item.show.name}</h3>
-            <img src="${item.show.image.medium}" alt="${item.show.name}">
-            <div class="show__item--info">
-            <span>Género: ${item.show.genres}</span>
-            <a class="show__link" href=${item.show.url} title="Ver ficha" target="_blank"><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
-            </div>
-            </li>`;            
-        } else { 
-            showList.innerHTML += `<li id=${item.show.id} class="show__list--item">
-            <h3 class="show__title">${item.show.name}</h3>
-            <img src="https://via.placeholder.com/210x295/cc8383/000" alt="${item.show.name}">
-            <div class="show__item--info">
-            <span>Género: ${item.show.genres}</span>
-            <a class="show__link" href=${item.show.url} title="Ver ficha" target="_blank"><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
-            </div>
-            </li>`;
-        }
-        addToFavListeners();
-    }   
-}
-
-function addToFavListeners() {
-    const showListElement = document.querySelectorAll('.show__list--item');
-    for (let element of showListElement) {
-        element.addEventListener('click', saveAsFav);
-    }
-}
-
-function saveAsFav(event) {
-    const index = parseInt(event.currentTarget.id);
-    if (favShows.indexOf(index) === -1) {
-    favShows.push(index);
-    console.log('Guardada');
-    renderFavs(favShows);
-    setLocalStorage();
+    
+    if (showImage !== null) {
+        showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'>
+         <h3 class='show__title'>${item.show.name}</h3>
+         <img src='${item.show.image.medium}' alt='${item.show.name}'>
+         <span>Género: ${item.show.genres}</span>
+         <a class='show__link" href='${item.show.url}' title='Ver ficha' target='_blank'><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
+         </li>`;
     } else {
-        console.log('Ya está en favoritos');
+        showList.innerHTML +=
+        `<li id='${item.show.id}' class='show__list--item'>
+         <h3 class='show__title'>${item.show.name}</h3>
+         <img src=${defaultImg} alt='${item.show.name}'>
+         <span>Género: ${item.show.genres}</span>
+         <a class='show__link" href='${item.show.url}' title='Ver ficha' target='_blank'><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
+         </li>`; 
+    }
+  }
+  addClickListeners();
+}
+
+// Listeners de la lista de resultados para guardar en favoritos
+function addClickListeners() {
+    const showItem = document.querySelectorAll('.show__list--item');
+    for (let show of showItem) {
+        show.addEventListener('click', saveFavourites);
     }
 }
 
-// Relacionar el array de ids de favoritos con el objeto al que hace referencia en el array de objetos 'shows'.
-// function getShow(id) {
-//     for (let show of shows) {
-//         if (show.show.id === id) {
-//             return show;
-//         }
-//     }
-// }
+// Guardar favoritos
 
-function getShow(id) {
-    return shows.find(show => show.show.id === id)
-}
-
-
-function renderFavs(arrFav) {
-    const sectionFav = document.querySelector('.section__fav--movies');
-    sectionFav.innerHTML = '';
-    // Recorro el array de favoritos
-    for (let favourite of arrFav) {
-        const object = getShow(favourite);
-        if (favourite === object.show.id) {
-            let showImage = object.show.image;
-            aside.classList.remove('hidden');
-                if (showImage !== null) {
-                    sectionFav.innerHTML += `<li id=${object.show.id} class="fav__list--item"><img src="${object.show.image.medium}" alt="${object.show.name}"> <h4>${object.show.name}</h4></li>`;
-                    // const favLiElement = document.querySelector('.fav__list--item');
-                    // favLiElement.classList.add('fav__show--style');
-                    
-                } else {
-                    sectionFav.innerHTML += `<li id=${object.show.id} class="fav__list--item"><img src="https://via.placeholder.com/210x295/cc8383/000" alt="${object.show.name}"><h4>${object.show.name}</h4></li>`; 
-                }
-            }
-        }
-}
-
-// LocalStorage
-function setLocalStorage() {
-    localStorage.setItem('favourites', JSON.stringify(favShows));
-}
-
-function readLocalStorage() {
-    let localFavs = JSON.parse(localStorage.getItem('favourites'));
-
-    if (localFavs !== null) {
-        return localFavs
+function saveFavourites(event) {
+    const selectedShow = event.currentTarget;
+    selectedShow.setAttribute('class', 'fav__show--style');
+    const index = event.currentTarget.id;
+    const object = getShowObject(index);
+    if (favourites.includes(object.show) === false) {
+        favourites.push(object.show);
+        // paintFavourites(favourites);
     }
-    return localFavs = []
 }
 
-// Function to connect 'Enter' key to search button. 
+// Pintar los favoritos
+
+// Relacionar id de favoritos con el array de objetos shows
+function getShowObject(id) {
+    return shows.find(show => show.show.id === parseInt(id));
+  }
+
+// Función para conectar la tecla 'Enter' con el botón de búsqueda 
 function inputEnter(event) {
-    if(event.keyCode === 13) {
-        btnSearch.click();
-    }
+  if(event.keyCode === 13) {
+    btnSearch.click();
+  }
 }
 inputSearch.addEventListener('keyup', inputEnter);
 
