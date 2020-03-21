@@ -80,10 +80,10 @@ function paintFavourites(favourites) {
   for (let favourite of favourites) {
     if (favourite) {
       aside.classList.remove('hidden');
-      if (favourite.image.medium !== null) {
+      if (favourite.image !== null) {
         sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"> <h4>${favourite.name}</h4></li>`;
       } else {
-        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="https://via.placeholder.com/210x295/cc8383/000" alt="${favourite.name}"><h4>${favourite.name}</h4></li>`;
+        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4>${favourite.name}</h4></li>`;
       }
     }
   }
@@ -104,5 +104,5 @@ inputSearch.addEventListener('keyup', inputEnter);
 
 btnSearch.addEventListener('click', connectToApi);
 connectToApi();
-
+paintFavourites(favourites);
 //# sourceMappingURL=main.js.map
