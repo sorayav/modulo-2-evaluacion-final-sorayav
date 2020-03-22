@@ -27,8 +27,11 @@ function connectToApi() {
 function paintResults(arr) {
   for (let item of arr) {
     let showImage = item.show.image;
+    const searchSection = document.querySelector('.search__shows');
     
     if (showImage !== null) {
+        searchSection.classList.remove('full_screen');
+        showList.classList.add('medium_screen');
         showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'>
          <h3 class='show__title'>${item.show.name}</h3>
          <img src='${item.show.image.medium}' alt='${item.show.name}'>
@@ -38,6 +41,7 @@ function paintResults(arr) {
          </div>
          </li>`;
     } else {
+      searchSection.classList.remove('full_screen');
         showList.innerHTML +=
         `<li id='${item.show.id}' class='show__list--item'>
          <h3 class='show__title'>${item.show.name}</h3>
@@ -80,21 +84,6 @@ function saveFavourites(event) {
     //   paintFavourites(favourites);
     }
 }
-
-// function saveFavourites(event) {
-//     const selectedShow = event.currentTarget;
-//     selectedShow.setAttribute('class', 'fav__show--style');
-//     const index = event.currentTarget.id;
-//     const object = getShowObject(index);
-//     if (favourites.indexOf(index) === -1) {
-//       favourites.push(object.show);
-//       paintFavourites(favourites);
-//       setLocalStorage(favourites);
-//       }
-//   } else if (event) {
-//       event.preventDefault();
-//   }
-
 
 // Pintar los favoritos
 function paintFavourites(favourites) {

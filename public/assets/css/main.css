@@ -255,10 +255,11 @@ a {
 body {
   -webkit-box-sizing: border-box;
   box-sizing: border-box;
+  font-family: 'Raleway', sans-serif;
 }
 
 .page__header {
-  font-family: "Franklin Gothic Medium", "Arial Narrow", Arial, sans-serif;
+  font-family: "Raleway", sans-serif;
   font-size: 20px;
   height: 5vh;
   background-color: black;
@@ -276,7 +277,7 @@ body {
 }
 
 .page__main {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Raleway", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -319,16 +320,18 @@ body {
   align-items: center;
   padding: 10px;
   border-bottom: 1px solid red;
+  background-size: cover;
 }
 
 .page__main .section__list--movies .search__movie {
   width: 300px;
-  border: 1px solid palevioletred;
+  border: 1px solid gray;
   margin: 15px;
 }
 
 .page__main .section__list--movies .btn__search {
-  border: 1px solid palevioletred;
+  border: 1px solid gray;
+  border-radius: 5px;
 }
 
 .page__main .section__list--movies .show__shows {
@@ -348,7 +351,6 @@ body {
   -ms-flex-align: center;
   align-items: center;
   overflow: scroll;
-  height: 80vh;
 }
 
 .page__main .section__list--movies .show__shows .show__list--item {
@@ -477,6 +479,18 @@ body {
 .hidden {
   position: absolute;
   left: -20vw;
+}
+
+.full_screen {
+  height: 100vh;
+  font-size: 4vh;
+  font-weight: 900;
+  background: url(https://images.unsplash.com/photo-1530020722985-452e278c5114?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80) no-repeat;
+  background-size: cover;
+}
+
+.medium_screen {
+  height: 80vh;
 }
 
 .page__footer {
