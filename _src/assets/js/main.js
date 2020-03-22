@@ -121,11 +121,7 @@ function removeSingleFavouriteHandler() {
 }
 
 function removeSingleFavourite(event) {
-  // const elemId = event.currentTarget.parentElement.id;
-  // const elemIndex = favourites.indexOf(elemId);
-  // favourites.splice(elemIndex, 1);
   const id = event.currentTarget.parentElement.id;
-  const object = getShowObject(id); 
   const findShow = favourites.findIndex(shows => parseInt(shows.id) === parseInt(id));
   favourites.splice(findShow, 1); 
   setLocalStorage(favourites);
