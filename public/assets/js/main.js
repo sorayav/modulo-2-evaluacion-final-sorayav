@@ -36,9 +36,10 @@ function paintResults(arr) {
         showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'>
          <h3 class='show__title'>${item.show.name}</h3>
          <img src='${item.show.image.medium}' alt='${item.show.name}'>
-         <div class="show__item--info">
-         <span>Género: ${item.show.genres}</span>
-         <a class='show__link" href='${item.show.url}' title='Ver ficha' target='_blank'><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
+         <div class="show__item--info overlay"> <span class="overlay__text">Mas información</span>
+         <span>Género: ${item.show.genres}</span><br>
+         <span>Idioma: ${item.show.language}</span><br>
+         <span>Sinopsis: ${item.show.summary}</span><br>
          </div>
          </li>`;
     } else {
@@ -47,9 +48,10 @@ function paintResults(arr) {
         `<li id='${item.show.id}' class='show__list--item'>
          <h3 class='show__title'>${item.show.name}</h3>
          <img src=${defaultImg} alt='${item.show.name}'>
-         <div class="show__item--info">
+         <div class="show__item--info overlay"> <span class="overlay__text">Más información</span>
          <span>Género: ${item.show.genres}</span>
-         <a class='show__link" href='${item.show.url}' title='Ver ficha' target='_blank'><i class="fas fa-chevron-circle-right"></i> Ver ficha</a>
+         <span>Idioma: ${item.show.language}</span><br>
+         <span>Sinopsis: ${item.show.summary}</span><br>
          </div>
          </li>`; 
     }
@@ -86,7 +88,7 @@ function saveFavourites(event) {
     else {
       favourites.splice(findShow, 1); 
       selectedShow.classList.toggle('fav__show--style');
-      selectedShow.classList.toggle('show__list--item');
+      // selectedShow.classList.toggle('show__list--item');
       setLocalStorage(favourites);
       paintFavourites(favourites);
     }

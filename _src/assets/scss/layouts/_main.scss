@@ -5,6 +5,10 @@
     justify-content: center;
     align-items: center;
 
+    h1, h2, h3 {
+        font-family: $titleFont;
+    }
+
     .section__list--movies {
         width: 80vw;
         flex-grow: 2;
@@ -14,12 +18,6 @@
         @include forMobile {
             width: 70vw;
             }
-
-        h1 {
-            
-            // background-color: rgb(240, 138, 178);
-            
-        }  
 
         .search__shows {
             display: flex;
@@ -77,9 +75,11 @@
                 flex-direction: column;
                 box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.8);
                 cursor: pointer;
+                position: relative;
 
                 &:hover {
-                    box-shadow: 1px 1px 10px 0px rgb(222, 145, 172);
+                    // box-shadow: 1px 1px 10px 0px rgb(222, 145, 172);
+                    
                 }
                 
                 img {
@@ -89,11 +89,34 @@
                 }
 
                 .show__item--info {
+                    position: absolute;
+                    bottom: 0;
+                    left: 0;
+                    right: 0;
+                    background-color: rgb(222,144,169);
+                    color: white;
+                    overflow: hidden;
+                    width: 100%;
+                    height: 10%;
+                    transition: 0.5s ease;
                     display: flex;
                     flex-direction: column;
                     font-size: 12px;
                     margin-top: 10px;
+                    padding: 0 10px 0px 10px;
                     font-weight: 400;
+                    font-family: 'Playfair Display', serif;
+                    line-height: 1.2;
+
+                    .overlay__text {
+                        font-size: 16px;
+                        font-weight: bold;
+                        margin: 4.5% 0;
+                    }
+
+                    &:hover, .overlay {
+                        height: 100%;
+                    }
                 }
             }
                     .fav__show--style {
@@ -104,10 +127,10 @@
                         display: flex;
                         flex-direction: column;
                         // background-color: rgb(210, 158, 248);
-                        background: url(https://images.unsplash.com/photo-1540760938999-077b8231d890?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60);
+                        background: url(https://images.unsplash.com/photo-1530367215503-327c484541ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1766&q=80);
                         background-position: center;
-                        
                         cursor: pointer;
+                        position: relative;
 
                         img {
                             width: 210px;
@@ -116,10 +139,29 @@
                         }
 
                         .show__item--info {
+                            position: absolute;
+                            bottom: 0;
+                            left: 0;
+                            right: 0;
+                            background-color: rgb(216, 216, 216);
+                            overflow: hidden;
+                            width: 100%;
+                            height: 10%;
+                            transition: 0.5s ease;
                             display: flex;
                             flex-direction: column;
                             font-size: 12px;
                             margin-top: 10px;
+                            font-weight: 400;
+        
+                            .overlay__text {
+                                font-size: 18px;
+                                margin: 5% 0;
+                            }
+        
+                            &:hover, .overlay {
+                                height: 100%;
+                            }
                         }
                     }
         }
@@ -127,16 +169,20 @@
 
     aside {
         text-align: center;
+        box-shadow: 2px 2px 10px gray;
+        height: 100vh;
+        margin-top: 0;
+        
         
         .fav__movies--title {
             padding: 20px 0;
         }
         
         .btn__remove--all {
-            
             background-color: rgba(255, 255, 255, 0.80);
             border-radius: 5px;
             border: 1px solid lightgray;
+            font-size: 12px;
 
             &:hover {
                 background-color: rgba(222, 145, 172, 0.80);
@@ -152,10 +198,9 @@
     .section__fav--movies {
         width: 20vw;
         height: 90vh;
-        padding: 10px;
+        padding: 20px;
         order: 0;
         text-align: center;
-        border-right: 1px dashed black;
         overflow: scroll;
         display: flex;
         flex-wrap: nowrap;
@@ -223,3 +268,4 @@
 .medium_screen {
     height: 90vh;
 }
+

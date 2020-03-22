@@ -277,7 +277,7 @@ body {
 }
 
 .page__main {
-  font-family: "Abril Fatface", cursive;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen, Ubuntu, Cantarell, "Open Sans", "Helvetica Neue", sans-serif;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -291,6 +291,10 @@ body {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
+}
+
+.page__main h1,.page__main h2,.page__main h3 {
+  font-family: "Abril Fatface", cursive;
 }
 
 .page__main .section__list--movies {
@@ -381,11 +385,7 @@ body {
   -webkit-box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.8);
   box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.8);
   cursor: pointer;
-}
-
-.page__main .section__list--movies .show__shows .show__list--item:hover {
-  -webkit-box-shadow: 1px 1px 10px 0px #de91ac;
-  box-shadow: 1px 1px 10px 0px #de91ac;
+  position: relative;
 }
 
 .page__main .section__list--movies .show__shows .show__list--item img {
@@ -395,6 +395,17 @@ body {
 }
 
 .page__main .section__list--movies .show__shows .show__list--item .show__item--info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #de90a9;
+  color: white;
+  overflow: hidden;
+  width: 100%;
+  height: 10%;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -404,7 +415,20 @@ body {
   flex-direction: column;
   font-size: 12px;
   margin-top: 10px;
+  padding: 0 10px 0px 10px;
   font-weight: 400;
+  font-family: 'Playfair Display', serif;
+  line-height: 1.2;
+}
+
+.page__main .section__list--movies .show__shows .show__list--item .show__item--info .overlay__text {
+  font-size: 16px;
+  font-weight: bold;
+  margin: 4.5% 0;
+}
+
+.page__main .section__list--movies .show__shows .show__list--item .show__item--info:hover,.page__main .section__list--movies .show__shows .show__list--item .show__item--info .overlay {
+  height: 100%;
 }
 
 .page__main .section__list--movies .show__shows .fav__show--style {
@@ -419,9 +443,10 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  background: url(https://images.unsplash.com/photo-1540760938999-077b8231d890?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60);
+  background: url(https://images.unsplash.com/photo-1530367215503-327c484541ee?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1766&q=80);
   background-position: center;
   cursor: pointer;
+  position: relative;
 }
 
 .page__main .section__list--movies .show__shows .fav__show--style img {
@@ -431,6 +456,16 @@ body {
 }
 
 .page__main .section__list--movies .show__shows .fav__show--style .show__item--info {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: #d8d8d8;
+  overflow: hidden;
+  width: 100%;
+  height: 10%;
+  -webkit-transition: 0.5s ease;
+  transition: 0.5s ease;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -440,10 +475,24 @@ body {
   flex-direction: column;
   font-size: 12px;
   margin-top: 10px;
+  font-weight: 400;
+}
+
+.page__main .section__list--movies .show__shows .fav__show--style .show__item--info .overlay__text {
+  font-size: 18px;
+  margin: 5% 0;
+}
+
+.page__main .section__list--movies .show__shows .fav__show--style .show__item--info:hover,.page__main .section__list--movies .show__shows .fav__show--style .show__item--info .overlay {
+  height: 100%;
 }
 
 .page__main aside {
   text-align: center;
+  -webkit-box-shadow: 2px 2px 10px gray;
+  box-shadow: 2px 2px 10px gray;
+  height: 100vh;
+  margin-top: 0;
 }
 
 .page__main aside .fav__movies--title {
@@ -454,6 +503,7 @@ body {
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
   border: 1px solid lightgray;
+  font-size: 12px;
 }
 
 .page__main aside .btn__remove--all:hover {
@@ -469,12 +519,11 @@ body {
 .page__main aside .section__fav--movies {
   width: 20vw;
   height: 90vh;
-  padding: 10px;
+  padding: 20px;
   -webkit-box-ordinal-group: 1;
   -ms-flex-order: 0;
   order: 0;
   text-align: center;
-  border-right: 1px dashed black;
   overflow: scroll;
   display: -webkit-box;
   display: -ms-flexbox;
