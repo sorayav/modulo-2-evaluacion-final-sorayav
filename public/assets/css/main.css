@@ -419,7 +419,8 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: #d29ef8;
+  background: url(https://images.unsplash.com/photo-1540760938999-077b8231d890?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60);
+  background-position: center;
   cursor: pointer;
 }
 
@@ -447,6 +448,22 @@ body {
 
 .page__main aside .fav__movies--title {
   padding: 20px 0;
+}
+
+.page__main aside .btn__remove--all {
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.page__main aside .btn__remove--all:hover {
+  background-color: rgba(222, 145, 172, 0.8);
+  color: white;
+}
+
+.page__main aside .btn__remove--all:focus {
+  background-color: rgba(222, 145, 172, 0.8);
+  color: white;
 }
 
 .page__main aside .section__fav--movies {
@@ -477,23 +494,34 @@ body {
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
-  -webkit-box-orient: horizontal;
+  -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
-  -ms-flex-direction: row;
-  flex-direction: row;
+  -ms-flex-direction: column;
+  flex-direction: column;
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
   position: relative;
 }
 
-.page__main aside .section__fav--movies li .btn__remove--fav {
+.page__main aside .section__fav--movies li .btn__remove--single {
   position: absolute;
   top: 0;
+  background-color: black;
+  color: white;
+  border-radius: 100%;
+  border: 2px solid rgba(255, 255, 255, 0.85);
+}
+
+.page__main aside .section__fav--movies li .btn__remove--single:hover {
+  background-color: #de91ac;
 }
 
 .page__main aside .section__fav--movies li img {
-  width: 100px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  padding: 5px;
+  width: 150px;
 }
 
 .hidden {
@@ -510,7 +538,16 @@ body {
 }
 
 .medium_screen {
-  height: 80vh;
+  height: 90vh;
+}
+
+@media all and (min-width: 1280px) {
+  .page__main aside .section__fav--movies li {
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: row;
+    flex-direction: row;
+  }
 }
 
 @media all and (max-width: 500px) {

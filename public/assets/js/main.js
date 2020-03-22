@@ -24,7 +24,7 @@ function connectToApi() {
       })
 }
 
-// Pintar los resultados de búsqueda
+// Paint search results
 function paintResults(arr) {
   for (let item of arr) {
     let showImage = item.show.image;
@@ -57,7 +57,7 @@ function paintResults(arr) {
   addClickListeners();
 }
 
-// Listeners de la lista de resultados para guardar en favoritos
+// Results search list listeners to add to favourites
 function addClickListeners() {
   const showItem = document.querySelectorAll('.show__list--item');
   for (let show of showItem) {
@@ -65,7 +65,7 @@ function addClickListeners() {
   }
 }
 
-// Guardar favoritos
+// Save to favourites
 function saveFavourites(event) {
   const selectedShow = event.currentTarget;
   const id = event.currentTarget.id;
@@ -77,7 +77,6 @@ function saveFavourites(event) {
     selectedShow.classList.toggle('show__list--item');
     paintFavourites(favourites);
     setLocalStorage(favourites);
-
     } 
     else {
       favourites.splice(findShow, 1); 
@@ -88,7 +87,7 @@ function saveFavourites(event) {
     }
 }
 
-// Pintar los favoritos
+// Paint favourites
 function paintFavourites(favourites) {
   showFavList.innerHTML = '';
   const sectionFav = document.querySelector('.section__fav--movies');
@@ -96,19 +95,42 @@ function paintFavourites(favourites) {
       if (favourite.image !== null) {
         aside.classList.remove('hidden');
         sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"> <h4>${favourite.name}</h4>
-        <button class="btn__remove--single" type="button>x</button></li>`;
+        <button class="btn__remove--single" type="button">x</button></li>`;
+        removeSingleFavouriteHandler();
       } else {
         sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4>${favourite.name}</h4>
-        <button class="btn__remove--single" type="button>x</button></li>`;
+        <button class="btn__remove--single" type="button">x</button></li>`;
+        removeSingleFavouriteHandler();
     }
   } 
 }
 
-function removeFavourites() {
+// Remove favourites functions
+function removeAllFavourites() {
   localStorage.removeItem('favourites');
   showFavList.innerHTML = '';
+  aside.classList.add('hidden');
 }
-btnRemoveAll.addEventListener('click', removeFavourites);
+btnRemoveAll.addEventListener('click', removeAllFavourites);
+
+function removeSingleFavouriteHandler() {
+  const btnRemoveSingle = document.querySelectorAll('.btn__remove--single');
+  for (let btn of btnRemoveSingle){
+    btn.addEventListener('click', removeSingleFavourite);
+  }
+}
+
+function removeSingleFavourite(event) {
+  // const elemId = event.currentTarget.parentElement.id;
+  // const elemIndex = favourites.indexOf(elemId);
+  // favourites.splice(elemIndex, 1);
+  const id = event.currentTarget.parentElement.id;
+  const object = getShowObject(id); 
+  const findShow = favourites.findIndex(shows => parseInt(shows.id) === parseInt(id));
+  favourites.splice(findShow, 1); 
+  setLocalStorage(favourites);
+  paintFavourites(favourites);
+}
 
 
 // Relacionar id de favoritos con el array de objetos shows

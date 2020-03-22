@@ -67,7 +67,6 @@
             justify-content: center;
             align-items: center;
             overflow: scroll;
-            
 
             .show__list--item {
                 width: 250px;
@@ -104,7 +103,10 @@
                         margin: 10px 40px;
                         display: flex;
                         flex-direction: column;
-                        background-color: rgb(210, 158, 248);
+                        // background-color: rgb(210, 158, 248);
+                        background: url(https://images.unsplash.com/photo-1540760938999-077b8231d890?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=60);
+                        background-position: center;
+                        
                         cursor: pointer;
 
                         img {
@@ -129,7 +131,23 @@
         .fav__movies--title {
             padding: 20px 0;
         }
-    
+        
+        .btn__remove--all {
+            
+            background-color: rgba(255, 255, 255, 0.80);
+            border-radius: 5px;
+            border: 1px solid lightgray;
+
+            &:hover {
+                background-color: rgba(222, 145, 172, 0.80);
+                color: white;
+            }
+
+            &:focus {
+                background-color: rgba(222, 145, 172, 0.80);
+                color: white;
+            }
+        }
     
     .section__fav--movies {
         width: 20vw;
@@ -151,23 +169,36 @@
 
         li {
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
             align-items: center;
             position: relative;
                 
-            .btn__remove--fav {
+            .btn__remove--single {
                 position: absolute;
                 top: 0;
+                background-color: black;
+                color: white;
+                border-radius: 100%;
+                border: 2px solid rgba(255, 255, 255, 0.85);
+
+                &:hover {
+                 background-color: rgb(222, 145, 172);   
+                }
             }
-            // @include forTablet {
-              
-            // }
+            @include forDesktop {
+              flex-direction: row;
+            }
 
             img {
-            width: 100px;
+                border: 1px solid #ddd;
+                border-radius: 4px;
+                padding: 5px;
+                width: 150px;
+                
 
               @include forMobile {
                 width: 50px;
+                
               }
             }
         }
@@ -190,5 +221,5 @@
     color: white;
 }
 .medium_screen {
-    height: 80vh;
+    height: 90vh;
 }
