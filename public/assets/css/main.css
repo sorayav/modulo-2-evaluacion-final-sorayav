@@ -259,7 +259,7 @@ body {
 }
 
 .page__header {
-  font-family: "Raleway", sans-serif;
+  font-family: "Abril Fatface", cursive;
   font-size: 20px;
   height: 5vh;
   background-color: black;
@@ -277,7 +277,7 @@ body {
 }
 
 .page__main {
-  font-family: "Raleway", sans-serif;
+  font-family: "Abril Fatface", cursive;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -319,19 +319,32 @@ body {
   -ms-flex-align: center;
   align-items: center;
   padding: 10px;
-  border-bottom: 1px solid red;
-  background-size: cover;
+  border-bottom: 1px solid #333333;
 }
 
 .page__main .section__list--movies .search__movie {
   width: 300px;
   border: 1px solid gray;
   margin: 15px;
+  font-size: 16px;
 }
 
 .page__main .section__list--movies .btn__search {
-  border: 1px solid gray;
+  width: 300px;
+  background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
+  border: none;
+  font-size: 18px;
+}
+
+.page__main .section__list--movies .btn__search:hover {
+  background-color: rgba(222, 145, 172, 0.8);
+  color: white;
+}
+
+.page__main .section__list--movies .btn__search:focus {
+  background-color: rgba(222, 145, 172, 0.8);
+  color: white;
 }
 
 .page__main .section__list--movies .show__shows {
@@ -357,7 +370,7 @@ body {
   width: 250px;
   height: 400px;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -365,8 +378,14 @@ body {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  background-color: yellow;
+  -webkit-box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.8);
+  box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.8);
   cursor: pointer;
+}
+
+.page__main .section__list--movies .show__shows .show__list--item:hover {
+  -webkit-box-shadow: 1px 1px 10px 0px #de91ac;
+  box-shadow: 1px 1px 10px 0px #de91ac;
 }
 
 .page__main .section__list--movies .show__shows .show__list--item img {
@@ -385,13 +404,14 @@ body {
   flex-direction: column;
   font-size: 12px;
   margin-top: 10px;
+  font-weight: 400;
 }
 
 .page__main .section__list--movies .show__shows .fav__show--style {
   width: 250px;
   height: 400px;
   padding: 10px;
-  margin: 10px 0;
+  margin: 10px 40px;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -477,29 +497,20 @@ body {
 }
 
 .hidden {
-  position: absolute;
-  left: -20vw;
+  display: none;
 }
 
 .full_screen {
   height: 100vh;
   font-size: 4vh;
-  font-weight: 900;
-  background: url(https://images.unsplash.com/photo-1530020722985-452e278c5114?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3450&q=80) no-repeat;
+  background: url(https://images.unsplash.com/photo-1565098772267-60af42b81ef2?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=3484&q=80) no-repeat;
   background-size: cover;
+  background-position: center;
+  color: white;
 }
 
 .medium_screen {
   height: 80vh;
-}
-
-.page__footer {
-  position: fixed;
-  height: 3vh;
-  bottom: 0;
-  background-color: black;
-  width: 100vw;
-  color: white;
 }
 
 @media all and (max-width: 500px) {
