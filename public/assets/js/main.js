@@ -12,7 +12,7 @@ const btnRemoveAll = document.querySelector('.btn__remove--all');
 let shows = null;
 let favourites = readLocalStorage();
 
-// Connect to API 
+// Conectar con la API 
 function connectToApi() {
     showList.innerHTML = '';
     fetch(urlBase + inputSearch.value)
@@ -24,7 +24,7 @@ function connectToApi() {
       })
 }
 
-// Paint search results
+// Pintar los resultados de la búsqueda
 function paintResults(arr) {
   for (let item of arr) {
     let showImage = item.show.image;
@@ -57,7 +57,7 @@ function paintResults(arr) {
   addClickListeners();
 }
 
-// Results search list listeners to add to favourites
+// Listeners para la lista de resultados
 function addClickListeners() {
   const showItem = document.querySelectorAll('.show__list--item');
   for (let show of showItem) {
@@ -65,7 +65,12 @@ function addClickListeners() {
   }
 }
 
-// Save to favourites
+// Relacionar id de favoritos con el array de objetos shows
+function getShowObject(id) {
+  return shows.find(show => show.show.id === parseInt(id));
+}
+
+// Guardar como favoritos
 function saveFavourites(event) {
   const selectedShow = event.currentTarget;
   const id = event.currentTarget.id;
@@ -87,7 +92,7 @@ function saveFavourites(event) {
     }
 }
 
-// Paint favourites
+// Pintar favoritos
 function paintFavourites(favourites) {
   showFavList.innerHTML = '';
   const sectionFav = document.querySelector('.section__fav--movies');
@@ -105,7 +110,7 @@ function paintFavourites(favourites) {
   } 
 }
 
-// Remove favourites functions
+// Funciones para eliminar favoritos
 function removeAllFavourites() {
   localStorage.removeItem('favourites');
   showFavList.innerHTML = '';
@@ -126,12 +131,6 @@ function removeSingleFavourite(event) {
   favourites.splice(findShow, 1); 
   setLocalStorage(favourites);
   paintFavourites(favourites);
-}
-
-
-// Relacionar id de favoritos con el array de objetos shows
-function getShowObject(id) {
-  return shows.find(show => show.show.id === parseInt(id));
 }
 
 // Setear localStorage, recibe como parámetro el array de los ids favoritos
@@ -156,9 +155,8 @@ function inputEnter(event) {
     btnSearch.click();
   }
 }
-inputSearch.addEventListener('keyup', inputEnter);
 
+inputSearch.addEventListener('keyup', inputEnter);
 btnSearch.addEventListener('click', connectToApi);
-// paintFavourites(favourites);
 connectToApi();
 //# sourceMappingURL=main.js.map
