@@ -66,22 +66,24 @@ function addClickListeners() {
 
 // Guardar favoritos
 function saveFavourites(event) {
-  const selectedShow = event.currentTarget; // Revisar
-  const index = event.currentTarget.id; // Revisar con parent
-  const object = getShowObject(index); // Revisar poner el object en la función de pintar
-  if (favourites.includes(object.show) !== true) {
+  const selectedShow = event.currentTarget;
+  const id = event.currentTarget.id;
+  const object = getShowObject(id); 
+  const findShow = favourites.findIndex(shows => parseInt(shows.id) === parseInt(id)); // Situar el id en el index, hay que parsear ambos o no funciona 
+  if (findShow === -1) {
     favourites.push(object.show); 
-    selectedShow.classList.toggle('fav__show--style'); // Revisar
+    selectedShow.classList.toggle('fav__show--style'); // Cambiar
     selectedShow.classList.toggle('show__list--item');
     paintFavourites(favourites);
     setLocalStorage(favourites);
+
     } 
     else {
-      favourites.splice(object.show, 1); // Revisar
+      favourites.splice(findShow, 1); 
       selectedShow.classList.toggle('fav__show--style');
       selectedShow.classList.toggle('show__list--item');
       setLocalStorage(favourites);
-    //   paintFavourites(favourites);
+      paintFavourites(favourites);
     }
 }
 
@@ -90,9 +92,8 @@ function paintFavourites(favourites) {
   showFavList.innerHTML = '';
   const sectionFav = document.querySelector('.section__fav--movies');
   for (let favourite of favourites) {
-    if (favourite) {
-      aside.classList.remove('hidden');
       if (favourite.image !== null) {
+        aside.classList.remove('hidden');
         sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"> <h4>${favourite.name}</h4>
         <button class="btn__remove--fav type="button>x</button></li>`;
       } else {
@@ -101,7 +102,7 @@ function paintFavourites(favourites) {
       }
     } 
   }
-}
+
 
 // Relacionar id de favoritos con el array de objetos shows
 function getShowObject(id) {
@@ -115,12 +116,12 @@ function setLocalStorage(favourites) {
 
 // Leer localStorage
 function readLocalStorage() {
-  let favourites = JSON.parse(localStorage.getItem('favourites'));
+  let localFavourites = JSON.parse(localStorage.getItem('favourites'));
 
-  if (favourites !== null) {
-    return favourites;
+  if (localFavourites !== null) {
+    return localFavourites;
   } else {
-    return favourites = []; // Para evitar que dé error, devolver un array vacío donde poder almacenar los ids
+    return localFavourites = []; // Para evitar que dé error, devolver un array vacío donde poder almacenar los ids
   }
 }
 
