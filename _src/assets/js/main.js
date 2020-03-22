@@ -7,6 +7,7 @@ let showList = document.querySelector('.show__shows');
 const aside = document.querySelector('aside');
 const showFavList = document.querySelector('.section__fav--movies');
 const defaultImg = 'https://via.placeholder.com/210x295/cc8383/000';
+const btnRemoveAll = document.querySelector('.btn__remove--all');
 
 let shows = null;
 let favourites = readLocalStorage();
@@ -95,13 +96,19 @@ function paintFavourites(favourites) {
       if (favourite.image !== null) {
         aside.classList.remove('hidden');
         sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"> <h4>${favourite.name}</h4>
-        <button class="btn__remove--fav type="button>x</button></li>`;
+        <button class="btn__remove--single" type="button>x</button></li>`;
       } else {
         sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4>${favourite.name}</h4>
-        <button class="btn__remove--fav type="button>x</button></li>`;
-      }
-    } 
-  }
+        <button class="btn__remove--single" type="button>x</button></li>`;
+    }
+  } 
+}
+
+function removeFavourites() {
+  localStorage.removeItem('favourites');
+  showFavList.innerHTML = '';
+}
+btnRemoveAll.addEventListener('click', removeFavourites);
 
 
 // Relacionar id de favoritos con el array de objetos shows
