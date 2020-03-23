@@ -80,15 +80,15 @@ function saveFavourites(event) {
   const findShow = favourites.findIndex(shows => parseInt(shows.id) === parseInt(id)); // Situar el id en el index, hay que parsear ambos o no funciona 
   if (findShow === -1) {
     favourites.push(object.show); 
-    selectedShow.classList.toggle('fav__show--style'); // Cambiar
-    selectedShow.classList.toggle('show__list--item');
+    selectedShow.classList.add('fav__show--style'); // Cambiar
+    selectedShow.classList.remove('show__list--item');
     paintFavourites(favourites);
     setLocalStorage(favourites);
     } 
     else {
       favourites.splice(findShow, 1); 
-      selectedShow.classList.toggle('fav__show--style');
-      // selectedShow.classList.toggle('show__list--item');
+      selectedShow.classList.remove('fav__show--style');
+      selectedShow.classList.add('show__list--item');
       setLocalStorage(favourites);
       paintFavourites(favourites);
     }
@@ -116,7 +116,7 @@ function paintFavourites(favourites) {
 function removeAllFavourites() {
   localStorage.removeItem('favourites');
   showFavList.innerHTML = '';
-  aside.remove();
+  aside.classList.add('hidden');
 }
 btnRemoveAll.addEventListener('click', removeAllFavourites);
 
