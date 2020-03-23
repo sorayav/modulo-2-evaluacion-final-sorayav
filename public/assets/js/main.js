@@ -116,7 +116,7 @@ function paintFavourites(favourites) {
 function removeAllFavourites() {
   localStorage.removeItem('favourites');
   showFavList.innerHTML = '';
-  aside.classList.add('hidden');
+  aside.remove();
 }
 btnRemoveAll.addEventListener('click', removeAllFavourites);
 
@@ -150,6 +150,25 @@ function readLocalStorage() {
     return localFavourites = []; // Para evitar que dé error, devolver un array vacío donde poder almacenar los ids
   }
 }
+// const btnCloseFav = document.querySelector('.btn__close--fav1');
+// const btnOpenFav = document.querySelector('.btn__close--fav2');
+// function closeFavSection(event){
+//   if (aside.innerHTML !== '') {
+//   const selectedBtn = event.currentTarget.nextSibling;
+//   selectedBtn.classList.add('hidden');
+//     btnOpenFav.classList.remove('hidden');
+//     btnCloseFav.classList.add('hidden');
+// }
+// }
+// function openFavSection(event){
+//   const selectedBtn = event.currentTarget.nextSibling;
+//   selectedBtn.classList.remove('hidden');
+//   btnOpenFav.classList.add('hidden');
+//   btnCloseFav.classList.remove('hidden');
+// }
+
+// btnCloseFav.addEventListener('click', closeFavSection);
+// btnOpenFav.addEventListener('click', openFavSection);
 
 // Conectar la tecla 'Enter' con el botón de búsqueda 
 function inputEnter(event) {
