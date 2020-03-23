@@ -33,27 +33,11 @@ function paintResults(arr) {
     if (showImage !== null) {
         searchSection.classList.remove('full_screen');
         showList.classList.add('medium_screen');
-        showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'>
-         <h3 class='show__title'>${item.show.name}</h3>
-         <img src='${item.show.image.medium}' alt='${item.show.name}'>
-         <div class="show__item--info overlay"> <span class="overlay__text">Mas información</span>
-         <span>Género: ${item.show.genres}</span><br>
-         <span>Idioma: ${item.show.language}</span><br>
-         <span>Sinopsis: ${item.show.summary}</span><br>
-         </div>
-         </li>`;
+        showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src='${item.show.image.medium}' alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Mas información</span><span>Género: ${item.show.genres}</span><br><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary}</span><br></div></li>`;
     } else {
       searchSection.classList.remove('full_screen');
         showList.innerHTML +=
-        `<li id='${item.show.id}' class='show__list--item'>
-         <h3 class='show__title'>${item.show.name}</h3>
-         <img src=${defaultImg} alt='${item.show.name}'>
-         <div class="show__item--info overlay"> <span class="overlay__text">Más información</span>
-         <span>Género: ${item.show.genres}</span>
-         <span>Idioma: ${item.show.language}</span><br>
-         <span>Sinopsis: ${item.show.summary}</span><br>
-         </div>
-         </li>`; 
+        `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src=${defaultImg} alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Más información</span><span>Género: ${item.show.genres}</span><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary}</span><br></div></li>`; 
     }
   }
   addClickListeners();
@@ -86,12 +70,14 @@ function saveFavourites(event) {
     setLocalStorage(favourites);
     } 
     else {
-      favourites.splice(findShow, 1); 
+      favourites.splice(findShow, 1);
       selectedShow.classList.remove('fav__show--style');
       selectedShow.classList.add('show__list--item');
       setLocalStorage(favourites);
       paintFavourites(favourites);
+      console.log('favorito');
     }
+    
 }
 
 // Pintar favoritos
