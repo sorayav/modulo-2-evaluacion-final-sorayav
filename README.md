@@ -4,7 +4,7 @@
  El ejercicio consiste en desarrollar una aplicación web de búsqueda de series de TV, que nos permite marcar y desmarcar las series como favoritas y guardarlas en local storage.
 
 Está realizada con JavaScript , junto a una parte de maquetación con HTML y Sass.
-Para probar la demo, se puede acceder a través del enlace de Github pages, o clonar el repositorio y arrancarlo con `npm install` y `npm start` (o `gulp`).
+Para probar la demo, se puede acceder a través del [enlace de Github pages](http://beta.adalab.es/modulo-2-evaluacion-final-sorayav), o clonar el repositorio y arrancarlo con `npm install` y `npm start` (o `gulp`).
 
 ## 1. Estructura:
 
