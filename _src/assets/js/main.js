@@ -61,10 +61,10 @@ function saveFavourites(event) {
   const selectedShow = event.currentTarget;
   const id = event.currentTarget.id;
   const object = getShowObject(id); 
-  const findShow = favourites.findIndex(shows => parseInt(shows.id) === parseInt(id)); // Situar el id en el index, hay que parsear ambos o no funciona 
+  const findShow = favourites.findIndex(shows => parseInt(shows.id) === parseInt(id)); // Situar el id en el index
   if (findShow === -1) {
     favourites.push(object.show); 
-    selectedShow.classList.add('fav__show--style'); // Cambiar
+    selectedShow.classList.add('fav__show--style');
     selectedShow.classList.remove('show__list--item');
     paintFavourites(favourites);
     setLocalStorage(favourites);
@@ -87,12 +87,10 @@ function paintFavourites(favourites) {
   for (let favourite of favourites) {
       if (favourite.image !== null) {
         aside.classList.remove('hidden');
-        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"> <h4>${favourite.name}</h4>
-        <button class="btn__remove--single" type="button">x</button></li>`;
+        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"><h4 class="fav__item--title"><a href="${favourite.url}" title="Ver ficha." aria-label="Ver ficha." target="_blank">${favourite.name}</a></h4><button class="btn__remove--single" type="button">x</button></li>`;
         removeSingleFavouriteHandler();
       } else {
-        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4>${favourite.name}</h4>
-        <button class="btn__remove--single" type="button">x</button></li>`;
+        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4 class="fav__item--title"><a href="${favourite.url}" title="Ver ficha." aria-label="Ver ficha." target="_blank">${favourite.name}</a></h4><button class="btn__remove--single" type="button">x</button></li>`;
         removeSingleFavouriteHandler();
     }
   } 

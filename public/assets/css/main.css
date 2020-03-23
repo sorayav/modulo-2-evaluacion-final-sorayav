@@ -258,6 +258,10 @@ body {
   font-family: 'Raleway', sans-serif;
 }
 
+a {
+  color: inherit;
+}
+
 .page__header {
   font-family: "Abril Fatface", cursive;
   font-size: 20px;
@@ -301,8 +305,9 @@ body {
   font-size: 10px;
 }
 
-.page__main h1,.page__main h2,.page__main h3 {
+.page__main h1,.page__main h2,.page__main h3,.page__main h4 {
   font-family: "Abril Fatface", cursive;
+  letter-spacing: 0.2px;
 }
 
 .page__main .section__list--movies {
@@ -334,6 +339,8 @@ body {
   align-items: center;
   border-bottom: 1px solid #333333;
   padding: 5px;
+  -webkit-transition: 0.2 ease;
+  transition: 0.2 ease;
 }
 
 .page__main .section__list--movies .search__movie {
@@ -513,15 +520,15 @@ body {
 
 .page__main aside {
   text-align: center;
-  -webkit-box-shadow: 2px 2px 10px gray;
-  box-shadow: 2px 2px 10px gray;
+  -webkit-box-shadow: 1px 1px 15px gray;
+  box-shadow: 1px 1px 15px gray;
   height: 100vh;
   margin-top: 0;
   position: relative;
   overflow: scroll;
 }
 
-.page__main aside .fav__movies--title {
+.page__main aside .fav__section--title {
   padding: 20px 0;
 }
 
@@ -562,7 +569,7 @@ body {
   flex-direction: column;
   -webkit-box-align: start;
   -ms-flex-align: start;
-  align-items: start;
+  align-items: flex-start;
   margin-right: 10px;
 }
 
@@ -578,6 +585,23 @@ body {
   -ms-flex-align: center;
   align-items: center;
   position: relative;
+  margin: 5px 0 5px 0;
+}
+
+.page__main aside .section__fav--movies li h4 {
+  margin: 10px 0;
+}
+
+.page__main aside .section__fav--movies li a {
+  color: inherit;
+  border-bottom: 1px dashed #de91ac;
+  -webkit-transition: all 0.5s ease;
+  transition: all 0.5s ease;
+}
+
+.page__main aside .section__fav--movies li a:hover {
+  border-bottom: 1px dashed black;
+  color: #de91ac;
 }
 
 .page__main aside .section__fav--movies li .btn__remove--single {
@@ -597,7 +621,7 @@ body {
   border: 1px solid #ddd;
   border-radius: 4px;
   padding: 5px;
-  width: 150px;
+  width: 120px;
 }
 
 .hidden {
@@ -618,11 +642,19 @@ body {
 }
 
 @media all and (min-width: 1280px) {
+  .page__main aside .section__fav--movies li h4 {
+    margin: 0 20px;
+  }
+
   .page__main aside .section__fav--movies li {
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
     -ms-flex-direction: row;
     flex-direction: row;
+  }
+
+  .page__main aside .section__fav--movies li img {
+    width: 150px;
   }
 }
 
