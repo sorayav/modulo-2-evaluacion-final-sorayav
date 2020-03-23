@@ -22,6 +22,7 @@ function connectToApi() {
         paintResults(shows);
         paintFavourites(favourites);
       })
+      removeAllFavourites();
 }
 
 // Pintar los resultados de la búsqueda
@@ -92,6 +93,7 @@ function paintFavourites(favourites) {
         removeSingleFavouriteHandler();
     }
   } 
+  
 }
 
 // Funciones para eliminar favoritos
@@ -99,6 +101,7 @@ function removeAllFavourites() {
   localStorage.removeItem('favourites');
   showFavList.innerHTML = '';
   aside.classList.add('hidden');
+  favourites = [];
 }
 btnRemoveAll.addEventListener('click', removeAllFavourites);
 

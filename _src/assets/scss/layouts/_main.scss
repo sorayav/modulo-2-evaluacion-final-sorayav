@@ -52,12 +52,12 @@
             
                 
             &:hover {
-                background-color: rgba(222, 145, 172, 0.80);
+                background-color: $mainPinkClear;
                 color: white;
             }
 
             &:focus {
-                background-color: rgba(222, 145, 172, 0.80);
+                background-color: $mainPinkClear;
                 color: white;
             }
         }
@@ -92,7 +92,7 @@
                     bottom: 0;
                     left: 0;
                     right: 0;
-                    background-color: rgb(222,144,169);
+                    background-color: $mainPink;
                     color: white;
                     overflow: hidden;
                     width: 100%;
@@ -126,7 +126,7 @@
                         display: flex;
                         flex-direction: column;
                         box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.8);
-                        background-color: rgb(222,144,169);
+                        background-color: $mainPink;
                         color: white;
                         background-position: center;
                         cursor: pointer;
@@ -147,7 +147,7 @@
                             bottom: 0;
                             left: 0;
                             right: 0;
-                            background-color: rgb(222,144,169);
+                            background-color: $mainPink;
                             color: white;
                             overflow: hidden;
                             width: 100%;
@@ -195,12 +195,12 @@
             font-size: 12px;
 
             &:hover {
-                background-color: rgba(222, 145, 172, 0.80);
+                background-color: $mainPinkClear;
                 color: white;
             }
 
             &:focus {
-                background-color: rgba(222, 145, 172, 0.80);
+                background-color: $mainPinkClear;
                 color: white;
             }
         }
