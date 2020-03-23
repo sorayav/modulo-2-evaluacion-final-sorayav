@@ -3,7 +3,7 @@
 
  El ejercicio consiste en desarrollar una aplicación web de búsqueda de series de TV, que nos permite marcar y desmarcar las series como favoritas y guardarlas en local storage.
 
-Está realizada con JavaScript , junto a una parte de maquetación con HTML y Sass.
+Está realizada con JavaScript, junto a una parte de maquetación con HTML y Sass.
 Para probar la demo, se puede acceder a través del [enlace de Github pages](http://beta.adalab.es/modulo-2-evaluacion-final-sorayav), o clonar el repositorio y arrancarlo con `npm install` y `npm start` (o `gulp`).
 
 ## 1. Estructura:
@@ -35,4 +35,4 @@ El listado de favoritos se almacena en el localStorage; de esta forma, al recarg
 
 ## 5. BONUS: Borrar favoritos
 
-Los favoritos se pueden eliminar de forma individual, haciendo clic sobre la tarjeta del resultado de búsqueda o sobre la "X" en cada serie de la sección de favoritos; y de forma completa, pulsando sobre "Eliminar todas". Esta función limpiará la lista tanto en el DOM como en localStorage y ocultará la sección de favoritos.
+Los favoritos se pueden eliminar de forma individual, haciendo clic sobre la tarjeta del resultado de búsqueda o sobre la "X" en cada serie de la sección de favoritos; y de forma total, pulsando sobre "Eliminar todas". Esta función limpiará la lista tanto en el DOM como en localStorage y ocultará la sección de favoritos.
