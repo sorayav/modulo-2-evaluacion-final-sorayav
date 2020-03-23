@@ -22,7 +22,6 @@ function connectToApi() {
         paintResults(shows);
         paintFavourites(favourites);
       })
-      removeAllFavourites();
 }
 
 // Pintar los resultados de la búsqueda
@@ -93,7 +92,6 @@ function paintFavourites(favourites) {
         removeSingleFavouriteHandler();
     }
   } 
-  
 }
 
 // Funciones para eliminar favoritos
