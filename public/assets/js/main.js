@@ -36,8 +36,7 @@ function paintResults(arr) {
         showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src='${item.show.image.medium}' alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Mas información</span><span>Género: ${item.show.genres}</span><br><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary}</span><br></div></li>`;
     } else {
       searchSection.classList.remove('full_screen');
-        showList.innerHTML +=
-        `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src=${defaultImg} alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Más información</span><span>Género: ${item.show.genres}</span><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary}</span><br></div></li>`; 
+        showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src=${defaultImg} alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Más información</span><span>Género: ${item.show.genres}</span><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary}</span><br></div></li>`; 
     }
   }
   addClickListeners();
@@ -75,7 +74,6 @@ function saveFavourites(event) {
       selectedShow.classList.add('show__list--item');
       setLocalStorage(favourites);
       paintFavourites(favourites);
-      console.log('favorito');
     }
     
 }
@@ -134,25 +132,6 @@ function readLocalStorage() {
     return localFavourites = []; // Para evitar que dé error, devolver un array vacío donde poder almacenar los ids
   }
 }
-// const btnCloseFav = document.querySelector('.btn__close--fav1');
-// const btnOpenFav = document.querySelector('.btn__close--fav2');
-// function closeFavSection(event){
-//   if (aside.innerHTML !== '') {
-//   const selectedBtn = event.currentTarget.nextSibling;
-//   selectedBtn.classList.add('hidden');
-//     btnOpenFav.classList.remove('hidden');
-//     btnCloseFav.classList.add('hidden');
-// }
-// }
-// function openFavSection(event){
-//   const selectedBtn = event.currentTarget.nextSibling;
-//   selectedBtn.classList.remove('hidden');
-//   btnOpenFav.classList.add('hidden');
-//   btnCloseFav.classList.remove('hidden');
-// }
-
-// btnCloseFav.addEventListener('click', closeFavSection);
-// btnOpenFav.addEventListener('click', openFavSection);
 
 // Conectar la tecla 'Enter' con el botón de búsqueda 
 function inputEnter(event) {
@@ -160,8 +139,9 @@ function inputEnter(event) {
     btnSearch.click();
   }
 }
-
 inputSearch.addEventListener('keyup', inputEnter);
+
+
 btnSearch.addEventListener('click', connectToApi);
 connectToApi();
 //# sourceMappingURL=main.js.map

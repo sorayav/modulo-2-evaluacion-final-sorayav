@@ -298,13 +298,6 @@ a {
   position: relative;
 }
 
-.page__main .btn__close--fav1,.page__main .btn__close--fav2 {
-  position: absolute;
-  top: 0;
-  left: 0;
-  font-size: 10px;
-}
-
 .page__main h1,.page__main h2,.page__main h3,.page__main h4 {
   font-family: "Abril Fatface", cursive;
   letter-spacing: 0.2px;
