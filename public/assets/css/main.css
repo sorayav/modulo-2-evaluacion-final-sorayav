@@ -329,13 +329,14 @@ a {
   width: 300px;
   background-color: rgba(255, 255, 255, 0.8);
   border-radius: 5px;
-  border: none;
+  border: 0.5px solid lightgray;
   font-size: 18px;
 }
 
 .page__main .section__list--movies .btn__search:hover {
   background-color: rgba(222, 145, 172, 0.8);
   color: white;
+  border: none;
 }
 
 .page__main .section__list--movies .btn__search:focus {
@@ -500,7 +501,7 @@ a {
   height: 100vh;
   margin-top: 0;
   position: relative;
-  overflow: scroll;
+  overflow: hidden;
 }
 
 .page__main aside .fav__section--title {
@@ -565,6 +566,7 @@ a {
 
 .page__main aside .section__fav--movies li h4 {
   margin: 10px 0;
+  line-height: 1.3;
 }
 
 .page__main aside .section__fav--movies li a {
@@ -601,6 +603,8 @@ a {
 
 .hidden {
   display: none;
+  -webkit-transition: ease 0.5s;
+  transition: ease 0.5s;
 }
 
 .full_screen {
@@ -610,6 +614,8 @@ a {
   background-size: cover;
   background-position: center;
   color: white;
+  -webkit-transition: ease 0.5s;
+  transition: ease 0.5s;
 }
 
 .medium_screen {
@@ -640,6 +646,11 @@ a {
 
   .page__main .section__list--movies .search__movie {
     width: 150px;
+  }
+
+  .page__main .section__list--movies .btn__search {
+    width: 150px;
+    font-size: 16px;
   }
 
   .page__main aside .section__fav--movies {
