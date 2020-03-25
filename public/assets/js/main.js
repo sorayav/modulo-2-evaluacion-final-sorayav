@@ -29,6 +29,8 @@ function paintResults(arr) {
   for (let item of arr) {
     let showImage = item.show.image;
     const searchSection = document.querySelector('.search__shows');
+    const resultsTitle = document.querySelector('h1');
+    resultsTitle.classList.add('hidden');
     searchSection.classList.remove('full_screen');
     showList.classList.add('medium_screen');
     if (showImage !== null) {
@@ -81,16 +83,25 @@ function paintFavourites(favourites) {
   showFavList.innerHTML = '';
   const sectionFav = document.querySelector('.section__fav--movies');
   for (let favourite of favourites) {
+    
       if (favourite.image !== null) {
         aside.classList.remove('hidden');
         sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"><h4 class="fav__item--title"><a href="${favourite.url}" title="Ver ficha." aria-label="Ver ficha." target="_blank">${favourite.name}</a></h4><button class="btn__remove--single" type="button">x</button></li>`;
         removeSingleFavouriteHandler();
+        
       } else {
         aside.classList.remove('hidden');
         sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4 class="fav__item--title"><a href="${favourite.url}" title="Ver ficha." aria-label="Ver ficha." target="_blank">${favourite.name}</a></h4><button class="btn__remove--single" type="button">x</button></li>`;
         removeSingleFavouriteHandler();
+        
     }
   } 
+}
+
+function hidFavSection() {
+  if (favourites === '') {
+    aside.classList.add('hidden');
+  }
 }
 
 // Funciones para eliminar favoritos
@@ -106,6 +117,7 @@ function removeSingleFavouriteHandler() {
   const btnRemoveSingle = document.querySelectorAll('.btn__remove--single');
   for (let btn of btnRemoveSingle){
     btn.addEventListener('click', removeSingleFavourite);
+    hidFavSection();
   }
 }
 

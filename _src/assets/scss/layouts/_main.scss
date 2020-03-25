@@ -28,7 +28,7 @@
             justify-content: center;
             align-items: center;
             border-bottom: 1px solid #333333;
-            padding: 5px;
+            padding: 0 0 45px 0;
             transition: 0.2 ease;
         }
 
@@ -37,6 +37,7 @@
             border: 1px solid gray;
             margin: 15px;
             font-size: 16px;
+            padding: 0 0 3px 0;
 
             @include forMobile {
                 width: 150px;
@@ -76,8 +77,8 @@
             overflow: scroll;
 
             .show__list--item {
-                width: 250px;
-                height: 400px;
+                width: 220px;
+                height: 350px;
                 padding: 10px;
                 margin: 10px 40px;
                 display: flex;
@@ -85,21 +86,32 @@
                 box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.8);
                 cursor: pointer;
                 position: relative;
+                transition: ease 0.2s;
 
-                // @include forMobile {
-                //     width: 150px;
-                //     height: 240px;
-                // }
+                @include forMobile {
+                    width: 150px;
+                    height: 240px;
+                }
+
+                @include forDesktop{
+                    width: 250px;
+                    height: 400px;
+                }
                 
                 img {
-                    width: 210px;
-                    height: 295px;
+                    width: 195px;
+                    height: 280px;
                     margin: auto;
 
-                    // @include forMobile {
-                    //     width: 130px;
-                    //     height: 200px;
-                    // }
+                    @include forMobile {
+                        width: 130px;
+                        height: 185px;
+                    }
+
+                    @include forDesktop{
+                        width: 210px;
+                        height: 295px;
+                    }
                 }
 
                 .show__item--info {
@@ -126,16 +138,24 @@
                         font-size: 16px;
                         font-weight: bold;
                         margin: 4.5% 0;
+
+                        @include forMobile {
+                            font-size: 14px;
+                        }
                     }
 
                     &:hover, &:focus, .overlay {
                         height: 90%;
+
+                        @include forMobile {
+                            height: 88%;
+                        }
                     }
                 }
             }
                     .fav__show--style {
-                        width: 250px;
-                        height: 400px;
+                        width: 220px;
+                        height: 350px;
                         padding: 10px;
                         margin: 10px 40px;
                         display: flex;
@@ -146,15 +166,35 @@
                         background-position: center;
                         cursor: pointer;
                         position: relative;
-                        transition: all 0.5s ease;
+                        transition: ease 0.2s;
+
+                        @include forMobile {
+                            width: 150px;
+                            height: 240px;
+                        }
+
+                        @include forDesktop{
+                            width: 250px;
+                            height: 400px;
+                        }
 
                         img {
-                            width: 210px;
-                            height: 295px;
+                            width: 195px;
+                            height: 280px;
                             margin: auto;
                             outline: 105px solid rgba(222,144,169, 0.5) !important;
                             outline-offset: -105px;
                             transition: all linear 0.2s;
+
+                            @include forMobile {
+                                width: 130px;
+                                height: 185px;
+                            }
+
+                            @include forDesktop{
+                                width: 210px;
+                                height: 295px;
+                            }
                         }
 
                         .show__item--info {
@@ -181,10 +221,18 @@
                                 font-size: 16px;
                                 font-weight: bold;
                                 margin: 4.5% 0;
+
+                                @include forMobile {
+                                    font-size: 14px;
+                                }
                             }
         
                             &:hover, &:focus, .overlay {
                                 height: 90%;
+
+                                @include forMobile {
+                                    height: 88%;
+                                }
                             }
                         }
                     }
@@ -199,6 +247,7 @@
         position: relative;
         overflow: hidden;
         
+        
         .fav__section--title {
             padding: 20px 0;
         }
@@ -208,6 +257,8 @@
             border-radius: 5px;
             border: 1px solid lightgray;
             font-size: 12px;
+            margin: 0 5px;
+            padding: 3px;
 
             &:hover {
                 background-color: $mainPinkClear;
@@ -289,6 +340,7 @@
                 
                 @include forMobile {
                     width: 60px;
+                    height: 85px;
                 }
 
                 @include forDesktop {
@@ -302,7 +354,6 @@
 
 .hidden {
     display: none;
-    transition: ease 0.5s;
 }
 .full_screen {
     height: 100vh;
@@ -311,9 +362,11 @@
     background-size: cover;
     background-position: center;
     color: white;
-    transition: ease 0.5s;
+    transition: ease 0.2s;
+    padding: 0;
 }
 .medium_screen {
     height: 80vh;
+    transition: ease 0.2s;
 }
 
