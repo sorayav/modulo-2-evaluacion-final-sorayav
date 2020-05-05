@@ -2,7 +2,7 @@
 
 let inputSearch = document.querySelector('.search__movie');
 const btnSearch = document.querySelector('.btn__search');
-const urlBase = 'http://api.tvmaze.com/search/shows?q=';
+const urlBase = 'https://api.tvmaze.com/search/shows?q=';
 let showList = document.querySelector('.show__shows');
 const aside = document.querySelector('aside');
 const showFavList = document.querySelector('.section__fav--movies');
@@ -153,7 +153,5 @@ function inputEnter(event) {
 }
 inputSearch.addEventListener('keyup', inputEnter);
 
-
 btnSearch.addEventListener('click', connectToApi);
-connectToApi();
 //# sourceMappingURL=main.js.map
