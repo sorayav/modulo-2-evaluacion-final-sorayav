@@ -425,6 +425,7 @@ a {
 
 .page__main .section__list--movies .show__shows .show__list--item .show__item--info:hover,.page__main .section__list--movies .show__shows .show__list--item .show__item--info:focus,.page__main .section__list--movies .show__shows .show__list--item .show__item--info .overlay {
   height: 90%;
+  overflow: scroll;
 }
 
 .page__main .section__list--movies .show__shows .fav__show--style {

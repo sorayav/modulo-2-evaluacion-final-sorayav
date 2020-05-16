@@ -138,7 +138,6 @@
                         font-size: 16px;
                         font-weight: bold;
                         margin: 4.5% 0;
-                        // overflow: scroll;
 
                         @include forMobile {
                             font-size: 14px;
@@ -147,6 +146,7 @@
 
                     &:hover, &:focus, .overlay {
                         height: 90%;
+                        overflow: scroll;
 
                         @include forMobile {
                             height: 88%;
