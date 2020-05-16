@@ -6,8 +6,7 @@ const urlBase = 'https://api.tvmaze.com/search/shows?q=';
 let showList = document.querySelector('.show__shows');
 const aside = document.querySelector('aside');
 const showFavList = document.querySelector('.section__fav--movies');
-const defaultImg = 'https://via.placeholder.com/210x295/cc8383/000';
-// const defaultImg = "../images/image-not-available.png";
+const defaultImg = 'https://fakeimg.pl/210x295/FFF/000/?text=No%20disponible';
 const btnRemoveAll = document.querySelector('.btn__remove--all');
 
 let shows = null;
@@ -65,15 +64,13 @@ function saveFavourites(event) {
     selectedShow.classList.remove('show__list--item');
     paintFavourites(favourites);
     setLocalStorage(favourites);
-    } 
-    else {
+    } else {
       favourites.splice(findShow, 1);
       selectedShow.classList.remove('fav__show--style');
       selectedShow.classList.add('show__list--item');
       setLocalStorage(favourites);
       paintFavourites(favourites);
     }
-    
 }
 
 // Pintar favoritos
@@ -87,7 +84,7 @@ function paintFavourites(favourites) {
   } 
 }
 
-function hidFavSection() {
+function hideFavSection() {
   if (favourites === '') {
     aside.classList.add('hidden');
   }
@@ -106,7 +103,7 @@ function removeSingleFavouriteHandler() {
   const btnRemoveSingle = document.querySelectorAll('.btn__remove--single');
   for (let btn of btnRemoveSingle){
     btn.addEventListener('click', removeSingleFavourite);
-    hidFavSection();
+    hideFavSection();
   }
 }
 
