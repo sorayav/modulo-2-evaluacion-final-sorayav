@@ -7,6 +7,7 @@ let showList = document.querySelector('.show__shows');
 const aside = document.querySelector('aside');
 const showFavList = document.querySelector('.section__fav--movies');
 const defaultImg = 'https://via.placeholder.com/210x295/cc8383/000';
+// const defaultImg = "../images/image-not-available.png";
 const btnRemoveAll = document.querySelector('.btn__remove--all');
 
 let shows = null;
@@ -34,7 +35,7 @@ function paintResults(arr) {
     searchSection.classList.remove('full_screen');
     showList.classList.add('medium_screen');
     if (showImage !== null) {
-        showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src='${item.show.image.medium}' alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Mas información</span><span>Género: ${item.show.genres}</span><br><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary}</span><br></div></li>`;
+        showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src='${item.show.image.medium}' alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Mas información</span><span>Género: ${item.show.genres}</span><br><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary === null ? 'No disponible' : `${item.show.summary}`}</span><br></div></li>`;
     } else {
       showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src=${defaultImg} alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Más información</span><span>Género: ${item.show.genres}</span><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary}</span><br></div></li>`; 
     }
