@@ -578,8 +578,8 @@ a {
 .page__main aside .section__fav--movies li a {
   color: inherit;
   border-bottom: 1px dashed #de91ac;
-  -webkit-transition: all 0.5s ease;
-  transition: all 0.5s ease;
+  -webkit-transition: all 0.2s ease;
+  transition: all 0.2s ease;
 }
 
 .page__main aside .section__fav--movies li a:hover {
