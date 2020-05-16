@@ -500,8 +500,8 @@ a {
 
 .page__main aside {
   text-align: center;
-  -webkit-box-shadow: 1px 1px 15px gray;
-  box-shadow: 1px 1px 15px gray;
+  -webkit-box-shadow: 1px 1px 10px rgba(192, 192, 192, 0.5);
+  box-shadow: 1px 1px 10px rgba(192, 192, 192, 0.5);
   height: 100vh;
   margin-top: 0;
   position: relative;
