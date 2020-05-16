@@ -34,11 +34,8 @@ function paintResults(arr) {
     resultsTitle.classList.add('hidden');
     searchSection.classList.remove('full_screen');
     showList.classList.add('medium_screen');
-    if (showImage !== null) {
-        showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src='${item.show.image.medium}' alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Mas información</span><span>Género: ${item.show.genres}</span><br><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary === null ? 'No disponible' : `${item.show.summary}`}</span><br></div></li>`;
-    } else {
-      showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src=${defaultImg} alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Más información</span><span>Género: ${item.show.genres}</span><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary}</span><br></div></li>`; 
-    }
+    
+    showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src='${showImage === null ? `${defaultImg}` : `${showImage.medium}`}' alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Mas información</span><span>Género: ${item.show.genres}</span><br><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary === null ? 'No disponible' : `${item.show.summary}`}</span><br></div></li>`;
   }
   addClickListeners();
 }
@@ -84,18 +81,9 @@ function paintFavourites(favourites) {
   showFavList.innerHTML = '';
   const sectionFav = document.querySelector('.section__fav--movies');
   for (let favourite of favourites) {
-    
-      if (favourite.image !== null) {
-        aside.classList.remove('hidden');
-        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image.medium}" alt="${favourite.name}"><h4 class="fav__item--title"><a href="${favourite.url}" title="Ver ficha." aria-label="Ver ficha." target="_blank">${favourite.name}</a></h4><button class="btn__remove--single" type="button">x</button></li>`;
-        removeSingleFavouriteHandler();
-        
-      } else {
-        aside.classList.remove('hidden');
-        sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${defaultImg}" alt="${favourite.name}"><h4 class="fav__item--title"><a href="${favourite.url}" title="Ver ficha." aria-label="Ver ficha." target="_blank">${favourite.name}</a></h4><button class="btn__remove--single" type="button">x</button></li>`;
-        removeSingleFavouriteHandler();
-        
-    }
+    aside.classList.remove('hidden');
+    sectionFav.innerHTML += `<li id=${favourite.id} class="fav__list--item"><img src="${favourite.image === null ? `${defaultImg}` : `${favourite.image.medium}`}" alt="${favourite.name}"><h4 class="fav__item--title"><a href="${favourite.url}" title="Ver ficha." aria-label="Ver ficha." target="_blank">${favourite.name}</a></h4><button class="btn__remove--single" type="button">x</button></li>`;
+    removeSingleFavouriteHandler();
   } 
 }
 
