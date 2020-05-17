@@ -274,9 +274,6 @@ a {
   -webkit-box-pack: center;
   -ms-flex-pack: center;
   justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
   position: relative;
 }
 
@@ -312,7 +309,7 @@ a {
   -webkit-box-align: center;
   -ms-flex-align: center;
   align-items: center;
-  border-bottom: 1px solid #333333;
+  border-bottom: 1px solid #adadad;
   padding: 0 0 45px 0;
   -webkit-transition: 0.2 ease;
   transition: 0.2 ease;
@@ -337,7 +334,7 @@ a {
 .page__main .section__list--movies .btn__search:hover {
   background-color: rgba(222, 145, 172, 0.8);
   color: white;
-  border: none;
+  border: 0.5px solid transparent;
 }
 
 .page__main .section__list--movies .btn__search:focus {
@@ -376,8 +373,8 @@ a {
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
   flex-direction: column;
-  -webkit-box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.8);
-  box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.8);
+  -webkit-box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.6);
+  box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.6);
   cursor: pointer;
   position: relative;
   -webkit-transition: ease 0.2s;

@@ -3,7 +3,7 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: center;
+    // align-items: center;
     position: relative;
 
     h1, h2, h3, h4 {
@@ -27,7 +27,8 @@
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            border-bottom: 1px solid #333333;
+            border-bottom: 1px solid #adadad;
+            // box-shadow: 1px 1px 10px rgba(192, 192, 192, 0.5);
             padding: 0 0 45px 0;
             transition: 0.2 ease;
         }
@@ -59,7 +60,7 @@
             &:hover {
                 background-color: $mainPinkClear;
                 color: white;
-                border: none;
+                border: 0.5px solid transparent;
             }
 
             &:focus {
@@ -75,6 +76,7 @@
             justify-content: center;
             align-items: center;
             overflow: scroll;
+            // margin-top: 10px;
 
             .show__list--item {
                 width: 220px;
@@ -83,7 +85,7 @@
                 margin: 10px 40px;
                 display: flex;
                 flex-direction: column;
-                box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.8);
+                box-shadow: 1px 1px 10px 0px rgba(173, 173, 173, 0.6);
                 cursor: pointer;
                 position: relative;
                 transition: ease 0.2s;

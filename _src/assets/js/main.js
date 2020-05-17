@@ -34,7 +34,7 @@ function paintResults(arr) {
     searchSection.classList.remove('full_screen');
     showList.classList.add('medium_screen');
     
-    showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src='${showImage === null ? `${defaultImg}` : `${showImage.medium}`}' alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Mas información</span><span>Género: ${item.show.genres}</span><br><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary === null ? 'No disponible' : `${item.show.summary}`}</span><br></div></li>`;
+    showList.innerHTML += `<li id='${item.show.id}' class='show__list--item'><h3 class='show__title'>${item.show.name}</h3><img src='${showImage === null ? `${defaultImg}` : `${showImage.medium}`}' alt='${item.show.name}'><div class="show__item--info overlay"> <span class="overlay__text">Mas información</span><span>Género: ${item.show.genres}</span><br><span>Idioma: ${item.show.language}</span><br><span>Sinopsis: ${item.show.summary === null || item.show.summary.length === 0 ? 'No disponible' : `${item.show.summary}`}</span><br></div></li>`;
   }
   addClickListeners();
 }
