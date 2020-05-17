@@ -36,8 +36,3 @@ El listado de favoritos se almacena en el localStorage; de esta forma, al recarg
 ## 5. BONUS: Borrar favoritos
 
 Los favoritos se pueden eliminar de forma individual, haciendo clic sobre la tarjeta del resultado de búsqueda o sobre la "X" en cada serie de la sección de favoritos; y de forma total, pulsando sobre "Eliminar todas". Esta función limpiará la lista tanto en el DOM como en localStorage y ocultará la sección de favoritos.
-
-## Screenshots
-
-![App frontpage](https://github.com/sorayav/modulo-2-evaluacion-final-sorayav/blob/master/docs/assets/images/aplicacion_series_sorayav.png)
-![App functionality](https://github.com/sorayav/modulo-2-evaluacion-final-sorayav/blob/master/docs/assets/images/aplicacion_series_sorayav2%20copia.png)
